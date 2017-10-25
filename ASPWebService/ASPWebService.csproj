@@ -75,9 +75,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Calc.html" />
+    <Content Include="Calculate.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculate.asmx.cs">
+      <DependentUpon>Calculate.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>
