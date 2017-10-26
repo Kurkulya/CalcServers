@@ -19,15 +19,13 @@
 
     function calcN(a, b, op) {
         if (op == '+')
-            op = 'p';
+            op = '%2b';
 
         var req = "a=" + a + "&b=" + b + "&op=" + op;
         var rr = new XMLHttpRequest();
         rr.open('POST', 'http://localhost:62864/Calculate.asmx/Calc', false);
         rr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         rr.send(req);
-        var response = rr.responseText;
-        return response.charAt(response.indexOf('val:') + 4);
-        
+        return JSON.parse(rr.responseText).Result;
     }
 </script>

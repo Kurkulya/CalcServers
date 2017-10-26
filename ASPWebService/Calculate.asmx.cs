@@ -18,7 +18,7 @@ namespace ASPWebService
     {
 
         [WebMethod]
-        public string Calc(string a, string b, string op)
+        public void Calc(string a, string b, string op)
         {
             int res = 0;
             int n1 = Convert.ToInt32(a);
@@ -26,11 +26,18 @@ namespace ASPWebService
             switch (op)
             {
                 case "-": res = n1 - n2; break;
-                case "p": res = n1 + n2; break;
+                case "+": res = n1 + n2; break;
                 case "*": res = n1 * n2; break;
                 case "/": res = n1 / n2; break;
             }
-            return $"val:{res}";
+
+            Object o = new
+            {
+                Result = res
+            };
+
+            var oSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            Context.Response.Write(oSerializer.Serialize(o));
         }
     }
 }
